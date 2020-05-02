@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd ">
+
+<mapper namespace="edu.neu.store.mappers.GoodsMapper">
+
+	<!-- 根據商品分類，查詢商品列表 -->
+	<!-- List<Goods> findByCategory(
+		@Param("categoryId") Long categoryId,
+		@Param("offset") Integer offset,
+		@Param("count") Integer count) -->
+	<select id="findByCategory" resultType="edu.neu.store.entity.Goods">
+		SELECT 
+			id, title,
+			price, image, 
+			sell_point AS sellPoint
+		FROM 
+			t_goods
+		WHERE 
+			category_id=#{categoryId}
+		ORDER BY 
+			priority DESC
+		LIMIT 
+			#{offset}, #{count}
+	</select>
+	<!-- 根據關鍵字查詢商品的資訊 -->
+	<!-- findByKey(String key) -->
+	<select id="findByKey" resultType="edu.neu.store.entity.Goods">
+		SELECT 
+			id, title,
+			price, image, 
+			sell_point AS sellPoint
+		FROM 
+			t_goods
+		WHERE 
+			title like CONCAT('%',#{key},'%')  OR 
+			item_type like CONCAT('%',#{key},'%')
+		ORDER BY 
+			priority DESC
+
+	</select>
+	
+	<!-- 根據id查詢商品詳情 -->
+	<!-- Goods findById(Long id) -->
+	<select id="findById" resultType="edu.neu.store.entity.Goods">
+		SELECT 
+			id,
+			category_id AS categoryId,
+			item_type AS itemType,
+			title,
+			sell_point AS sellPoint,
+			price, num,
+			barcode, image,
+			status, priority
+		FROM 
+			t_goods
+		WHERE 
+			id=#{id}
+	</select>
+	
+	<!-- 根據優先級獲取商品數據的列表 -->
+	<!-- List<Goods> findByPriority(Integer count) -->
+	<select id="findByPriority" resultType="edu.neu.store.entity.Goods">
+		SELECT 
+			id, title, price, image
+		FROM 
+			t_goods 
+		WHERE 
+			status=1 AND num>0
+		ORDER BY 
+			priority DESC
+		LIMIT 0, #{count}
+	</select>
+	
+</mapper>
+
+
+
+
+

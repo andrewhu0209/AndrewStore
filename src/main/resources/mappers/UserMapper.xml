@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="edu.neu.store.mappers.UserMapper">
+
+	<!-- 插入用戶數據 -->
+	<!-- Integer addnew(User user) -->
+	<insert id="addnew" parameterType="edu.neu.store.entity.User"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO t_user (
+		username, password,
+		salt, gender,
+		phone, email,
+		avatar, is_delete,
+		created_user, created_time,
+		modified_user, modified_time
+		) VALUES (
+		#{username}, #{password},
+		#{salt}, #{gender},
+		#{phone}, #{email},
+		#{avatar}, #{isDelete},
+		#{createdUser}, #{createdTime},
+		#{modifiedUser}, #{modifiedTime}
+		)
+	</insert>
+
+	<!-- 根據用戶名查詢用戶數據 -->
+	<!-- 應用於：註冊，登錄 -->
+	<!-- User findByUsername(String username) -->
+	<select id="findByUsername" resultType="edu.neu.store.entity.User">
+		SELECT
+		id, username, password,
+		salt, avatar,
+		is_delete AS isDelete  <!-- AS 可以不寫 -->
+		FROM
+		t_user
+		WHERE
+		username=#{username}
+	</select>
+	
+	<!-- 更新密碼 -->
+	<!-- Integer updatePassword(
+		@Param("uid") Integer uid,
+		@Param("password") String password,
+		@Param("modifiedUser") String modifiedUser,
+		@Param("modifiedTime") Date modifiedTime
+	); -->
+	<update id="updatePassword">
+		UPDATE 
+			t_user
+		SET
+			password=#{password},
+			modified_user=#{modifiedUser},
+			modified_time=#{modifiedTime}
+		WHERE
+			id=#{uid}
+	</update>
+	
+	<!-- 修改用戶資料（不含用戶名、密碼與頭像） -->
+	<!-- Integer updateInfo(User user); -->
+	<update id="updateInfo">
+		UPDATE 
+			t_user
+		SET
+			<if test="gender != null">
+			gender=#{gender},
+			</if>
+
+			<if test="phone != null">
+			phone=#{phone},
+			</if>
+
+			<if test="email != null">
+			email=#{email},
+			</if>
+
+			modified_user=#{modifiedUser},
+			modified_time=#{modifiedTime}
+		WHERE 
+			id=#{id}
+	</update>
+	
+	<!-- 更新用戶頭像 -->
+	<!-- Integer updateAvatar(
+		@Param("uid") Integer uid, 
+		@Param("avatar") String avatar, 
+		@Param("modifiedUser") String modifiedUser, 
+		@Param("modifiedTime") Date modifiedTime
+	); -->
+	<update id="updateAvatar">
+		UPDATE 
+		    t_user 
+		SET 
+		    avatar=#{avatar},
+		    modified_user=#{modifiedUser},
+		    modified_time=#{modifiedTime}
+		WHERE 
+		    id=#{uid}
+	</update>
+	
+	<!-- 根據用戶id查詢用戶數據 -->
+	<!-- User findById(Integer id) -->
+	<select id="findById" resultType="edu.neu.store.entity.User">
+		SELECT 
+			username,
+			gender, phone, email,
+			password, salt,
+			is_delete AS isDelete
+		FROM 
+			t_user
+		WHERE 
+			id=#{id}
+	</select>
+ 
+</mapper>
+
+
+
+
+

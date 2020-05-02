@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<title>學子商城</title>
+<!--導入核心文件-->
+<script src="../bootstrap3/js/holder.js"></script>
+<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet"
+	type="text/css">
+<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+<script src="../bootstrap3/js/bootstrap.js"></script>
+<!-- 字體圖標 -->
+<link rel="stylesheet"
+	href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="../css/top.css" />
+<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/reg.css" />
+<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+</head>
+
+<body>
+<!--頭部-->
+<header class="header">
+	<a href="index.html">
+		<img src="../images/index/stumalllogo.png" alt="" />
+	</a>
+	<span class="pull-right">
+			<h3>
+				<small>Welcome</small><b>Andrew Store</b>
+			</h3>
+		</span>
+
+</header>
+	<!--主體-->
+	<div class="container mycontent text-left">
+		<!--透明層 -->
+		<div class="regDiv">
+			<h4>New User Sign Up</h4>
+			<hr />
+			<!--表單開始-->
+			<form id="form-reg" class="form-horizontal" role="form">
+				<!--用戶名-->
+				<div class="form-group">
+					<label class="col-md-3 control-label">User Name：</label>
+					<div class="col-md-8">
+						<input name="username" type="text" class="form-control"
+							placeholder="Please Enter Your User Name">
+					</div>
+				</div>
+				<!--密碼-->
+				<div class="form-group">
+					<label class="col-md-3 control-label">Password:</label>
+					<div class="col-md-8">
+						<input name="password" type="password" class="form-control"
+							placeholder="Please Enter Your User Password">
+					</div>
+				</div>
+				<!--確認密碼-->
+				<div class="form-group">
+					<label class="col-md-3 control-label"> Confirm Password: </label>
+					<div class="col-md-8">
+						<input type="password" class="form-control" placeholder="Please Enter Your User Password Again">
+					</div>
+				</div>
+
+
+
+				<!--提交按鈕-->
+				<div class="form-group">
+					<label class="col-md-3 control-label"></label>
+					<div class="col-md-8">
+						<input id="btn-reg" class="btn btn-primary" type="button" value="Sign Up" />
+						 
+						<span class="pull-right"><small>Have account already？</small>
+						<a href="login.html">Sign In</a></span>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+<!--頁腳開始-->
+<footer class="footer">
+	<!-- 品質保障，私人定制等-->
+	<div class="text-center rights container">
+		<div class="col-md-offset-2 col-md-2">
+			<span class="fa fa-thumbs-o-up"></span>
+			<h4>Top Quality</h4>
+		</div>
+		<div class="col-md-2">
+			<span class="fa fa-address-card-o"></span>
+
+			<h4>Customized</h4>
+		</div>
+		<div class="col-md-2">
+			<span class="fa fa-graduation-cap"></span>
+			<h4>Student Plane</h4>
+		</div>
+		<div class="col-md-2">
+			<span class="fa fa-bitcoin"></span>
+
+			<h4>Best Price</h4>
+		</div>
+	</div>
+
+
+	<!--聯繫我們、下載客戶端等-->
+	<div class="container beforeBottom">
+
+		<div class="col-md-3">
+			<div><img src="../images/index/stumalllogo.png" alt="" class="footLogo" /></div>
+			<div><img src="../images/index/footerFont.png" alt="" /></div>
+
+		</div>
+		<div class="col-md-5 callus text-center">
+			<div class="col-md-4">
+				<ul>
+					<li><a href="#"><h5>Let Us Help You</h5></a></li>
+					<li><a href="#">Beginner's Guide</a></li>
+					<li><a href="#">Service</a></li>
+					<li><a href="#">Frequent Questions</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<ul>
+					<li><a href="#"><h5>Sell Your Products</h5></a></li>
+					<li><a href="#">Sell Your Service</a></li>
+					<li><a href="#">Advertise Your Products</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<ul>
+					<li><a href="#"><h5>Auout Us</h5></a></li>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Connect To Us</a></li>
+					<li>
+						<span class="fa fa-whatsapp"></span>
+						<span class="fa fa-youtube-play"></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="col-md-5">
+				<p>Download App</p>
+				<img src="../images/index/ios.png" class="lf">
+				<img src="../images/index/android.png" alt="" class="lf" />
+			</div>
+			<div class="col-md-6">
+				<img src="../images/index/erweima.png">
+			</div>
+		</div>
+	</div>
+
+	<!-- 頁面底部-備案號 #footer -->
+	<div class="col-md-12 text-center bottom">
+		Copyright © 2020 <a target="_blank" style="font-size: 12px" href="http://www.andrewhu.net/">Andrew Company</a> All Rights Reserved
+	</div>
+
+</footer>
+<!--頁腳結束-->
+	<script type="text/javascript">
+		// 為註冊按鈕綁定單擊事件	
+		$("#btn-reg").click(function() {
+			// 將請求提交到哪裡
+			// 當前位置：web/register.html
+			// 目標位置：user/reg.do
+			var url = "../user/reg.do";
+			// 請求參數
+			var data = $("#form-reg").serialize();
+			console.log("Register Parameter: " + data);
+			// 發出ajax請求，並處理結果
+			$.ajax({
+				"url" : url,
+				"data" : data,
+				"type" : "POST",
+				"dataType" : "json",
+				"success" : function(json) {
+					if (json.state == 200) {
+						alert("Regist Success! ");
+					} else {
+						alert(json.message);
+					}
+
+				}
+			});
+		})
+	</script>
+
+</body>
+
+</html>

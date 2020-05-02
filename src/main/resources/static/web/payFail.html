@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8" />
+		<title>学子商城</title>
+		<!--导入核心文件-->
+		<script src="../bootstrap3/js/holder.js"></script>
+		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<!-- 字体图标 -->
+		<link rel="stylesheet" href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/top.css" />
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../css/orderConfirm.css" />
+		<script src="../js/orderConfirm.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+	<!--頭部-->
+	<header class="header">
+		<!--學子商城logo-->
+		<div class="col-md-3">
+			<a href="index.html">
+				<img src="../images/index/stumalllogo.png" />
+			</a>
+		</div>
+		<!--快捷選項-->
+		<div class="col-md-9 top-item">
+
+			<ul class="list-inline" style="float: right;">
+
+				<li><a href="favorites.html"><span class="fa fa-heart"></span>&nbsp;Wish List</a></li>
+				<li class="li-split">|</li>
+				<li><a href="orders.html"><span class="fa fa-file-text"></span>&nbsp;Order</a></li>
+				<li class="li-split">|</li>
+				<li><a href="cart.html"><span class="fa fa-cart-plus"></span>Cart</a></li>
+				<li class="li-split">|</li>
+				<li>
+					<!--下列列表按鈕 ：管理-->
+					<div class="btn-group">
+						<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+							<span id="top-dropdown-btn"><span class="fa fa-gears"></span>Account <span class="caret"></span></span>
+						</button>
+						<ul class="dropdown-menu top-dropdown-ul" role="menu">
+							<li><a href="password.html">Change Password</a></li>
+							<li><a href="userdata.html">Personal Information</a></li>
+							<li><a href="upload.html">Upload Avatar</a></li>
+							<li><a href="address.html">Address Management</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="li-split">|</li>
+				<li><a href="login.html"><span class="fa fa-user"></span>&nbsp;Login</a></li>
+
+			</ul>
+
+		</div>
+
+	</header>
+	<!--頭部結束-->
+	<!--導航 -->
+	<!--分割導航和頂部-->
+	<div class="clearfix"></div>
+	<hr />
+	<div class="col-md-12 top-nav">
+		<div class="col-md-6">
+			<ul class="nav nav-pills">
+				<li>
+					<a href="#"></a>
+				</li>
+				<li class="active"><a href="index.html"><span class="fa fa-home"></span></a></li>
+				<li><a href="#">Best Sellers</a></li>
+				<li><a href="#">New Releases</a></li>
+				<li><a href="#">Browsing History</a></li>
+				<li><a href="#">Help</a></li>
+
+			</ul>
+
+		</div>
+		<div class="col-md-6">
+
+			<form action="search.html" onsubmit="return check();" class="form-inline" role="form" style="float: right;">
+				<div class="form-group">
+					<input type="text" class="form-control" id="search" name="key" placeholder="Please Enter Product Name To Search">
+				</div>
+
+				<button id="search-submit-button" type="submit" class="btn btn-default btn-sm"><span class="fa fa-search"></span></button>
+			</form>
+
+			<!--  收尋檢查 -->
+			<script type="text/javascript">
+
+				function check () {
+
+					var key = $("#search").val();
+
+					if(key == ''){
+						alert("Please Enter Key Word!");
+						return false;
+					}else{
+						return true;
+					}
+
+				}
+
+			</script>
+
+
+
+		</div>
+	</div>
+	<!--導航結束-->
+		<div class="col-md-offset-1 col-md-10">
+			<div class="col-md-4">
+				<div class="col-md-12 order-bar-undo">
+					1.确认订单信息
+					<span class="pull-right"><span class="fa fa-chevron-right"></span></span>
+				</div>
+
+			</div>
+			<div class="col-md-4">
+				<div class="col-md-12 order-bar-undo">
+					2.在线支付
+					<span class="pull-right"><span class="fa fa-chevron-right"></span></span>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="col-md-12 order-bar-active">
+					3.付款成功
+				</div>
+			</div>
+			<div class="col-md-12">
+				<form role="form">
+					<div class="form-group">
+
+						<label for="name">
+							<h4>支付结果：</h4></label>
+
+						<div>订单号：1101000301，支付金额¥5298，收款方达内学子商城</div>
+						<hr/>
+
+						<div class="text-center pay-res">
+							<span class="fa fa-times-rectangle-o pay-res-icon"></span>支付失败
+
+						</div>
+						<div class="text-center">
+							达内学子商城不会以系统异常、订单升级为由，要求你点击任何链接进行退款操作
+						</div>
+
+						<div class="pay-bar">
+							<a href="index.html">返回</a>
+
+						</div>
+
+				</form>
+
+				</div>
+			</div>
+		</div>
+	<!--頁腳開始-->
+	<div class="clearfix"></div>
+	<footer class="footer">
+		<!-- 品質保障，私人定制等-->
+		<div class="text-center rights container">
+			<div class="col-md-offset-2 col-md-2">
+				<span class="fa fa-thumbs-o-up"></span>
+				<h4>Top Quality</h4>
+			</div>
+			<div class="col-md-2">
+				<span class="fa fa-address-card-o"></span>
+
+				<h4>Customized</h4>
+			</div>
+			<div class="col-md-2">
+				<span class="fa fa-graduation-cap"></span>
+				<h4>Student Plane</h4>
+			</div>
+			<div class="col-md-2">
+				<span class="fa fa-bitcoin"></span>
+
+				<h4>Best Price</h4>
+			</div>
+		</div>
+
+
+		<!--聯繫我們、下載客戶端等-->
+		<div class="container beforeBottom">
+
+			<div class="col-md-3">
+				<div><img src="../images/index/stumalllogo.png" alt="" class="footLogo" /></div>
+				<div><img src="../images/index/footerFont.png" alt="" /></div>
+
+			</div>
+			<div class="col-md-5 callus text-center">
+				<div class="col-md-4">
+					<ul>
+						<li><a href="#"><h5>Let Us Help You</h5></a></li>
+						<li><a href="#">Beginner's Guide</a></li>
+						<li><a href="#">Service</a></li>
+						<li><a href="#">Frequent Questions</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<ul>
+						<li><a href="#"><h5>Sell Your Products</h5></a></li>
+						<li><a href="#">Sell Your Service</a></li>
+						<li><a href="#">Advertise Your Products</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<ul>
+						<li><a href="#"><h5>Auout Us</h5></a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Connect To Us</a></li>
+						<li>
+							<span class="fa fa-whatsapp"></span>
+							<span class="fa fa-youtube-play"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="col-md-5">
+					<p>Download App</p>
+					<img src="../images/index/ios.png" class="lf">
+					<img src="../images/index/android.png" alt="" class="lf" />
+				</div>
+				<div class="col-md-6">
+					<img src="../images/index/erweima.png">
+				</div>
+			</div>
+		</div>
+
+		<!-- 頁面底部-備案號 #footer -->
+		<div class="col-md-12 text-center bottom">
+			Copyright © 2020 <a target="_blank" style="font-size: 12px" href="http://www.andrewhu.net/">Andrew Company</a> All Rights Reserved
+		</div>
+
+	</footer>
+	<!--頁腳結束-->
+	</body>
+
+</html>

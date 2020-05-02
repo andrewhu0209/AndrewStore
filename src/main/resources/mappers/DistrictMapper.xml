@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="edu.neu.store.mappers.DistrictMapper">
+
+	<!-- 根據父級代號獲取子級的省/市/區的列表 -->
+	<!-- List<District> findByParent(String parent) -->
+	<select id="findByParent" resultType="edu.neu.store.entity.District">
+		SELECT
+			id, parent, code, name
+		FROM
+			t_dict_district
+		WHERE
+			parent=#{parent}
+		ORDER BY code
+	</select>
+
+	<!-- 根據代號獲取省/市/區的詳情 -->
+	<!-- District findByCode(String code) -->
+	<select id="findByCode" resultType="edu.neu.store.entity.District">
+		SELECT
+			id, parent, code, name
+		FROM
+			t_dict_district
+		WHERE
+			code=#{code}
+	</select>
+	
+</mapper>
+
+
+
+
+
