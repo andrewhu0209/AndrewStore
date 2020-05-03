@@ -15,17 +15,19 @@ pipeline {
             steps {
                 sh 'mvn clean package'
                 sh "docker build . -t andrewstore:${env.BUILD_ID}"
-                sh "docker container stop \$(docker ps -qa)"
+                
+            }
+
+        }
+        
+        stage ('Deployments'){
+        	steps{
+        	    sh "docker container stop \$(docker ps -qa)"
                 sh "docker run -p 80:80 -d andrewstore:${env.BUILD_ID}"
-            }
-            post {
-                success {
-                    echo '開始存檔...'
-                    sh "whoami"
-                    sh "pwd"
-                    archiveArtifacts artifacts: '**/target/*.jar'
-                }
-            }
+        	}
+
+        
+        
         }
 
 
