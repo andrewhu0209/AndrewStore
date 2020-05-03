@@ -14,6 +14,7 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'mvn clean package'
+                sh "/usr/local/bin/docker build . -t AndrewStore:${env.BUILD_ID}"
             }
             post {
                 success {

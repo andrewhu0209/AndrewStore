@@ -1,7 +1,7 @@
 FROM openjdk:8-jdk-alpine
 
-ADD ./webapp/target/*.war /usr/local/tomcat/webapps/
+ADD ./target/AndrewStore-0.0.1-SNAPSHOT.jar AndrewStore.jar
 
 EXPOSE 80
 
-CMD ["catalina.sh","run"]
+ENTRYPOINT ["java","-jar","AndrewStore.jar"]
