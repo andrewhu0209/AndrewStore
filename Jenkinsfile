@@ -16,8 +16,13 @@ pipeline {
         	stage('Build'){
             	steps('Maven build') {
                 	sh 'mvn clean package'
-                	sh "docker build . -t andrewstore:${env.BUILD_ID}"
-                
+                	sh "docker build . -t andrewstore:${env.BUILD_ID}" 
+            	}
+				post {
+               		success {
+                    echo '開始存檔...'
+                    archiveArtifacts artifacts: '**/target/*.jar'
+                	}
             	}
 	
         	}
@@ -29,12 +34,7 @@ pipeline {
                     	}
         		}
         	
-			post {
-               		success {
-                    echo '開始存檔...'
-                    archiveArtifacts artifacts: '**/target/*.jar'
-                	}
-            	}
+			
         	
         	
 
