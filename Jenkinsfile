@@ -27,16 +27,7 @@ pipeline {
 	
         	}
 
-			stage('Checkstyle') {
-                    	steps {
-                        	sh "mvn checkstyle:check"
-                        	recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
-                    	}
-        		}
-        	
-			
-        	
-        	
+                	
 
         stage ('Deployments'){
         	steps{
