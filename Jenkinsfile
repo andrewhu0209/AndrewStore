@@ -7,7 +7,7 @@ pipeline {
 
 
     triggers {
-         pollSCM('* * * * *')
+         pollSCM('H 0 * * *')
      }
 
      stages{
@@ -16,8 +16,9 @@ pipeline {
          	    
          	
 
-        	stage('Build'){
+        	
         	parallel{
+        	stage('Build'){
             	steps('Maven build') {
                 	sh 'mvn clean package'
                 	sh "docker build . -t andrewstore:${env.BUILD_ID}"
