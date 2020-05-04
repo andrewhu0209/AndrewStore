@@ -11,29 +11,37 @@ pipeline {
      }
 
      stages{
-     	parallel{
-         
+     
+         	
+         	    
+         	
+
         	stage('Build'){
-            	steps {
+        	parallel{
+            	steps('Maven build') {
                 	sh 'mvn clean package'
                 	sh "docker build . -t andrewstore:${env.BUILD_ID}"
                 
             	}
-           		 post {
+            	stage('Checkstyle') {
+                    	steps {
+                        	sh "mvn checkstyle:check"
+                        	recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
+                    	}
+        		}
+           		
+        	}
+        	 post {
                		 success {
                     echo '開始存檔...'
                     archiveArtifacts artifacts: '**/target/*.jar'
                 	}
             	}
+        	
         	}
-        	stage('Checkstyle') {
-                    	steps {
-                        	sh "mvn checkstyle:check"
-                        	recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
-                    	}
-        	}
+        	
         
-        }
+        
         
         
         stage ('Deployments'){
