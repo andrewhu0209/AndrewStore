@@ -14,7 +14,7 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	public String index() {
-		return "redirect:web/index.html";
+		return "redirect:/me.html";
 	}
 
 }
